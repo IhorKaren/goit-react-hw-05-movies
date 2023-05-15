@@ -1,11 +1,9 @@
-import React from 'react';
-
 const MovieInfo = ({ movie, genres }) => {
   return (
     <ul>
       <li>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
           alt={movie.original_title}
         />
       </li>
