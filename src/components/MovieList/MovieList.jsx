@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MovieList = ({ array }) => {
+  const location = useLocation();
+  const routeName = location.pathname.includes('/movies') ? '' : 'movies/';
+
   return (
     <ul>
       {array.map(el => {
         return (
           <li key={el.id}>
-            <Link to={`movies/${el.id}`}>{el.title}</Link>
+            <Link to={`${routeName}${el.id}`}>{el.title}</Link>
           </li>
         );
       })}
