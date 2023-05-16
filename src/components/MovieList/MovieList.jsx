@@ -10,7 +10,9 @@ const MovieList = ({ array }) => {
       {array.map(el => {
         return (
           <li key={el.id}>
-            <Link to={`${routeName}${el.id}`}>{el.title}</Link>
+            <Link to={`${routeName}${el.id}`} state={{ from: location }}>
+              {el.title}
+            </Link>
           </li>
         );
       })}

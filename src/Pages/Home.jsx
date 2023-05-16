@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import fetchTrandingMovies from '../services/GetTrandingMovie';
 import MovieList from 'components/MovieList/MovieList';
+import Loader from 'components/Loader/Loader';
 
 const Home = () => {
   const [movieList, setMovieList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getMovieList() {
       try {
+        setLoading(true);
         const response = await fetchTrandingMovies();
         setMovieList([...response]);
-      } catch {
-        toast(`Error`);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -21,9 +25,9 @@ const Home = () => {
 
   return (
     <>
+      {loading && <Loader />}
       <h1>Trending today</h1>
       <MovieList array={movieList} />
-      <ToastContainer />
     </>
   );
 };

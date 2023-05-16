@@ -8,13 +8,16 @@ const Reviews = () => {
 
   useEffect(() => {
     async function getMovie() {
-      const response = await fetchMovieReviews(movieId);
-      setReviews(response);
+      try {
+        const response = await fetchMovieReviews(movieId);
+        setReviews(response);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     getMovie();
   }, [movieId]);
-  console.log(reviews);
 
   return (
     <div>
