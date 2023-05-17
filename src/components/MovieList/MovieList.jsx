@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { List, Link } from './MovieList.styled';
 
 const MovieList = ({ array }) => {
   const location = useLocation();
   const routeName = location.pathname.includes('/movies') ? '' : 'movies/';
 
   return (
-    <ul>
+    <List>
       {array.map(el => {
         return (
           <li key={el.id}>
@@ -16,7 +17,7 @@ const MovieList = ({ array }) => {
           </li>
         );
       })}
-    </ul>
+    </List>
   );
 };
 

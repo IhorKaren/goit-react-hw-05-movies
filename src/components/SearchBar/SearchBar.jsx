@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { Form, Input, Button, Error } from './SearchBar.styled';
 
 const validationSchema = Yup.object().shape({
   movieSearch: Yup.string().trim().required('Search field cannot be empty'),
@@ -22,11 +23,11 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
-      {errors.movieSearch && <div>{errors.movieSearch?.message}</div>}
-      <input name="movieSearch" type="text" {...register('movieSearch')} />
-      <button type="submit">Search</button>
-    </form>
+    <Form onSubmit={handleSubmit(onSubmitForm)}>
+      {errors.movieSearch && <Error>{errors.movieSearch?.message}</Error>}
+      <Input name="movieSearch" type="text" {...register('movieSearch')} />
+      <Button type="submit">Search</Button>
+    </Form>
   );
 };
 

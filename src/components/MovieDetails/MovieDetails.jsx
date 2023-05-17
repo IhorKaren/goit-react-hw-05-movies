@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import fetchMovieByID from 'services/GetMovieById';
 import MovieInfo from 'components/MovieInfo/MovieInfo';
 import Loader from 'components/Loader/Loader';
+import {
+  Container,
+  ThumbList,
+  StyledLink,
+  GoBack,
+} from './MovieDatails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
@@ -31,18 +37,18 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <Container>
       {loading && <Loader />}
-      <Link to={backLinkLocationRef.current}>Go back</Link>
+      <GoBack to={backLinkLocationRef.current}>Go back</GoBack>
       <MovieInfo movie={movie} genres={genres} />
-      <ul>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
-      </ul>
+      <ThumbList>
+        <StyledLink to="cast">Cast</StyledLink>
+        <StyledLink to="reviews">Reviews</StyledLink>
+      </ThumbList>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </div>
+    </Container>
   );
 };
 
