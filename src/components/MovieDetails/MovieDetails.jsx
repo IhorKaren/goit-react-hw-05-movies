@@ -8,6 +8,7 @@ import {
   ThumbList,
   StyledLink,
   GoBack,
+  Information,
 } from './MovieDatails.styled';
 
 const MovieDetails = () => {
@@ -41,6 +42,7 @@ const MovieDetails = () => {
       {loading && <Loader />}
       <GoBack to={backLinkLocationRef.current}>Go back</GoBack>
       <MovieInfo movie={movie} genres={genres} />
+      <Information>Additional information</Information>
       <ThumbList>
         <StyledLink to="cast">Cast</StyledLink>
         <StyledLink to="reviews">Reviews</StyledLink>

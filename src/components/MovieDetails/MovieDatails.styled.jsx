@@ -5,6 +5,10 @@ const Container = styled.div`
   padding-top: 40px;
 `;
 
+const Information = styled.p`
+  margin: 5px 5px 0 70px;
+`;
+
 const ThumbList = styled.div`
   display: flex;
   margin-left: 90px;
@@ -42,4 +46,4 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export { Container, ThumbList, StyledLink, GoBack };
+export { Container, ThumbList, StyledLink, GoBack, Information };
